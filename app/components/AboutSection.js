@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from 'react';
 import localFont from 'next/font/local';
+import BentoStatCard from './BentoStatCard';
+import ServiceList from './ServiceList';
 
 function useIntersect(options) {
   const ref = useRef(null);
@@ -68,7 +70,7 @@ const heroFont = localFont({
 const SOCIAL_LINKS = [
   {
     name: 'LinkedIn',
-    href: 'https://linkedin.com/in/pridhuu',
+    href: 'https://linkedin.com/in/pridhu',
     icon: (
       <img src="/LinkedIn.svg" alt="LinkedIn" width={30} height={30} />
     ),
@@ -81,20 +83,52 @@ const SOCIAL_LINKS = [
     ),
   },
   {
-    name: 'Leetcode',
-    href: 'https://leetcode.com/pridhuu',
-    icon: (
-      <img src="/Leetcode.svg" alt="Leetcode" width={30} height={30} />
-    ),
-  },
-  {
     name: 'Behance',
     href: 'https://www.behance.net/pridhuuu',
     icon: (
       <img src="/Behance.svg" alt="Behance" width={30} height={30} />
     ),
   },
+  {
+    name: 'Leetcode',
+    href: 'https://leetcode.com/pridhu',
+    icon: (
+      <img src="/Leetcode.svg" alt="Leetcode" width={30} height={30} />
+    ),
+  },
 ];
+
+const WHITE_SOCIAL_LINKS = [
+  {
+    name: 'LinkedIn',
+    href: 'https://linkedin.com/in/pridhu',
+    icon: (
+      <img src="/white-linkedin.svg" alt="LinkedIn" width={30} height={30} />
+    ),
+  },
+  {
+    name: 'Github',
+    href: 'https://github.com/Pridhuu',
+    icon: (
+      <img src="/white-github.svg" alt="Github" width={30} height={30} />
+    ),
+  },
+  {
+    name: 'Behance',
+    href: 'https://www.behance.net/pridhuuu',
+    icon: (
+      <img src="/white-behance.svg" alt="Behance" width={30} height={30} />
+    ),
+  },
+  {
+    name: 'Leetcode',
+    href: 'https://leetcode.com/pridhuu',
+    icon: (
+      <img src="/white_leetcode.svg" alt="Leetcode" width={30} height={30} />
+    ),
+  },
+];
+
 
 export default function AboutSection() {
   const skillRefs = useRef([]);
@@ -118,29 +152,44 @@ export default function AboutSection() {
         {/* LEFT SIDE */}
         <div className="bento-left">
 
-          <div className="bento-cell-left">
-            <div className="bento-label">Client Satisfaction</div>
-            <div className="bento-desc">Delivering consistent quality through clear communication</div>
-            <div className="bento-value">98%</div>
+          <BentoStatCard
+            title="Client Satisfaction"
+            description="Delivering consistent quality through clear communication and thoughtful execution"
+            value={98}
+            suffix="%"
+          />
+
+          <div className="bento-cell-left"
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+            }}>
+            <div className={`bento-label ${heroFont.className}`} style={{ fontSize: '32px', fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1, textAlign: 'center', width: '100%', height: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', border: '2px solid var(--border)' }}>ABOUT ME</div>
+
+
+            <div className="service-list" style={{ height: '50%' }}>
+              <ServiceList />
+            </div>
           </div>
 
-          <div className="bento-cell-left">
-            <div className="bento-label">About Me</div>
-            <div className="bento-desc">Delivering consistent quality through clear communication</div>
-            <div className="bento-value">98%</div>
-          </div>
+          <BentoStatCard
+            title="Frontend Developing"
+            description="Building responsive, reliable interfaces with clean code and modern technologies"
+            value={4}
+            suffix="+"
+          />
 
-          <div className="bento-cell-left">
-            <div className="bento-label">Frontend Developing</div>
-            <div className="bento-desc">Clean, scalable interfaces</div>
-            <div className="bento-value">4+</div>
-          </div>
-
-          <div className="bento-cell-left">
-            <div className="bento-label">UI/UX Designing</div>
-            <div className="bento-desc">User-focused design systems</div>
-            <div className="bento-value">10+</div>
-          </div>
+          <BentoStatCard
+            title="UI/UX Designing"
+            description={
+              <>
+                Designing intuitive experiences through user research, clarity, and<br />
+                visual balance
+              </>
+            }
+            value={10}
+            suffix="+"
+          />
 
         </div>
 
@@ -163,7 +212,7 @@ export default function AboutSection() {
                   <div className="social-cube">
 
                     {/* FRONT FACE */}
-                    <div className="social-row">
+                    <div className="social-face social-front social-row">
                       <div className="social-row-left">
                         <div className="social-icon">
                           {link.icon}
@@ -178,30 +227,25 @@ export default function AboutSection() {
                     </div>
 
                     {/* BOTTOM FACE */}
-                    <div className="social-face social-bottom">
-                      <span>Open Profile</span>
+                    <div className="social-face social-bottom social-row">
+                      <div className="social-row-left">
+                        <div className="social-icon white-icon">
+                          {WHITE_SOCIAL_LINKS.find(l => l.name === link.name)?.icon}
+                        </div>
+                        <div className="social-name white-text">
+                          {link.name}
+                        </div>
+                      </div>
+
+                      <div className="social-row-right rotate-icon">
+                        <img src="/white-arrow.svg" alt="Arrow" width="35" height="35" />
+                      </div>
                     </div>
 
                   </div>
                 </div>
               </a>
             ))}
-          </div>
-
-        </div>
-      </div>
-      <div className="social-3d">
-        <div className="social-cube">
-
-          {/* FRONT FACE */}
-          <div className="social-face social-front">
-            <span>LinkedIn</span>
-            <span>↗</span>
-          </div>
-
-          {/* BOTTOM FACE */}
-          <div className="social-face social-bottom">
-            <span>Open Profile</span>
           </div>
 
         </div>

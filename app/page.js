@@ -38,7 +38,7 @@ export default function Home() {
     <>
       <Loader />
       <CustomCursor />
-      <Navbar />
+      {/* <Navbar /> */}
       <main ref={mainRef} id="main-content" aria-label="Main content">
         <HeroSection />
         <AboutSection />
