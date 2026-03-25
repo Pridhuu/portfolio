@@ -118,7 +118,6 @@ export default function HeroSection() {
           flex: 1,
           justifyContent: 'flex-end',
           overflow: 'hidden',
-          // borderBottom: '1px solid var(--border)',
         }}
       >
         {/* "My self" italic label */}
@@ -165,36 +164,6 @@ export default function HeroSection() {
           </span>
         </div>
       </div>
-
-      {/* Marquee Ticker */}
-      {/* <div
-        style={{
-          borderTop: '1px solid var(--border)',
-          borderBottom: '1px solid var(--border)',
-          overflow: 'hidden',
-          padding: '10px 0',
-          animation: 'fadeIn 0.6s 2s both',
-        }}
-      >
-        <div className="marquee-track" aria-hidden="true">
-          {[...tickerItems, ...tickerItems].map((item, i) => (
-            <span
-              key={i}
-              style={{
-                fontSize: '11px',
-                fontWeight: 500,
-                letterSpacing: item === '✦' ? '0' : '0.1em',
-                padding: '0 20px',
-                color: item === '✦' ? 'var(--accent)' : 'var(--fg-light)',
-                textTransform: 'uppercase',
-                whiteSpace: 'nowrap',
-              }}
-            >
-              {item}
-            </span>
-          ))}
-        </div>
-      </div> */}
     </section>
   );
 }

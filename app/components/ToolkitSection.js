@@ -61,10 +61,10 @@ export default function Page() {
       <Marquee items={TOOLS} speed={20} direction="right" />
 
 
-      <div className='toolkit-section-top' style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridTemplateRows: 'repeat(1, auto)', width: '100%', flex: 1 }}>
+      <div className='toolkit-section-top' style={{ display: 'grid', gridTemplateColumns: '1fr 2fr 1fr 2fr 1fr', gridTemplateRows: 'repeat(1, auto)', width: '100%', flex: 1 }}>
 
 
-        <div className="toolkit-section" style={{ width: '100%', border: '1px solid var(--border)', height: '100%', gridColumn: '3', gridRow: '1', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <div className="toolkit-section" style={{ width: '100%', border: '1px solid var(--border)', height: '100%', gridColumn: '4', gridRow: '1', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <ToolList />
         </div>
 

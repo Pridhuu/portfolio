@@ -164,7 +164,7 @@ export default function AboutSection() {
               display: 'flex',
               flexDirection: 'column',
             }}>
-            <div className={`bento-label ${heroFont.className}`} style={{ fontSize: '32px', fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1, textAlign: 'center', width: '100%', height: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', border: '2px solid var(--border)' }}>ABOUT ME</div>
+            <div className={`bento-label ${heroFont.className}`} style={{ fontSize: '32px', fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1, textAlign: 'center', width: '100%', height: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', borderBottom: '1px solid var(--border)' }}>ABOUT ME</div>
 
 
             <div className="service-list" style={{ height: '50%' }}>
