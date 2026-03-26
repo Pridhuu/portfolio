@@ -2,6 +2,9 @@
 
 import { useEffect, useRef, useState } from 'react';
 import localFont from 'next/font/local';
+import Navbar from './Navbar';
+import Waves from './Waves';
+
 
 const heroFont = localFont({
   src: '../fonts/MyHeroFont.woff2',
@@ -39,7 +42,7 @@ function useScramble(text, trigger) {
       if (iteration < text.length) {
         frame = requestAnimationFrame(animate);
       } else {
-        setDisplay(text); // ✅ final reset
+        setDisplay(text);
       }
     };
 
@@ -81,21 +84,24 @@ export default function HeroSection() {
 
   const name = useScramble('PRIDHU', trigger);
 
-  // Marquee ticker text
-  // const tickerItems = [
-  //   'UI/UX Designer',
-  //   '✦',
-  //   'Frontend Developer',
-  //   '✦',
-  //   'Creative Coder',
-  //   '✦',
-  //   'Visual Designer',
-  //   '✦',
-  // ];
 
   return (
     <section id="hero" className="hero-section" aria-label="Hero">
+      <Navbar />
       {/* Top info bar */}
+      {/* <Waves
+        lineColor="#ffffff"
+        backgroundColor="rgba(255, 255, 255, 0.2)"
+        waveSpeedX={0.05}
+        waveSpeedY={0.01}
+        waveAmpX={40}
+        waveAmpY={20}
+        friction={0.9}
+        tension={0.01}
+        maxCursorMove={120}
+        xGap={12}
+        yGap={36}
+      /> */}
       <div className="hero-top-bar">
         <div className="hero-top-left" style={{ animation: 'slideLeft 0.8s 1.5s cubic-bezier(0.4,0,0.2,1) both' }}>
           <div style={{ fontSize: '14px', fontWeight: 500, marginBottom: '2px' }}>UI/UX Designer</div>
@@ -121,12 +127,6 @@ export default function HeroSection() {
         }}
       >
         {/* "My self" italic label */}
-        <div
-          className={`hero-myself ${italicFont.className}`}
-          style={{ animation: 'slideUp 0.8s 1.2s cubic-bezier(0.4,0,0.2,1) both' }}
-        >
-          My <em>self</em>
-        </div>
 
         {/* Big PRIDHU text */}
         <div

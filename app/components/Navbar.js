@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
+import NavLinks from './NavComponent';
 
 const LINKS = ['Home', 'About Me', 'Works'];
 
@@ -68,28 +69,8 @@ export default function Navbar() {
           <img src="/logoPRIDHU.svg" alt="Logo" width={180} height={24} />
         </span>
 
-        {/* Nav Links */}
-        <ul className="nav-links" role="list">
-          {[
-            { label: 'Home', id: 'hero' },
-            { label: 'About Me', id: 'about' },
-            { label: 'Works', id: 'toolkit' },
-          ].map((item, i) => (
-            <li key={item.id} style={{ animation: `fadeIn 0.6s ease ${0.1 + i * 0.1}s both` }}>
-              <a
-                href={`#${item.id}`}
-                className="hover-line"
-                onClick={(e) => {
-                  e.preventDefault();
-                  scrollTo(item.id);
-                }}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-
+        {/* <NavLinks /> */}
+        <NavLinks />
         {/* Social Icons */}
         <div className="nav-socials" aria-label="Social links">
           {SOCIALS.slice(0, 5).map((s, i) => (

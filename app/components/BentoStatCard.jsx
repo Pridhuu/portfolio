@@ -59,7 +59,7 @@ export default function BentoStatCard({
             alignItems: 'center',
             padding: '16px 64px',
             height: '50%',
-            border: '2px solid var(--border)',
+            border: '1px solid var(--border)',
         }}>
 
             {/* Top Content */}

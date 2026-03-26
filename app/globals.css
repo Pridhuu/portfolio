@@ -456,7 +456,6 @@ a {
 
 /* ===================== NAV ===================== */
 .nav-root {
-  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
@@ -481,6 +480,7 @@ a {
 
 .nav-links {
   display: flex;
+  width: 20%;
   gap: 36px;
   list-style: none;
   font-size: 12px;
@@ -489,11 +489,11 @@ a {
 }
 
 .nav-links a {
-  transition: color var(--transition-fast);
+  transition: color #262626;
 }
 
 .nav-links a:hover {
-  color: var(--accent);
+  color: #262626;
 }
 
 .nav-socials {
@@ -516,18 +516,50 @@ a {
 }
 
 
-/* ===================== SECTION ===================== */
-section {
+.nav-links li a {
+  display: inline-block;
+  padding: 6px 14px;
+
+  border: 1px solid #262626;
+  border-radius: 999px;
+
+  font-size: 12px;
+  letter-spacing: 0.06em;
+
+  transition: all 0.25s ease;
+}
+
+.nav-links li a:hover {
+  background: var(--fg);
+  color: var(--bg);
+  border-color: var(--fg);
+}
+
+/* section {
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
-}
+} */
 
 /* ===================== HERO ===================== */
 .hero-section {
-  padding-top: 56px;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+.nav-links {
+  /* position: sticky; */
+  /* top: 16px; */
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+
+  margin: 0 auto;
+  width: fit-content;
+
+  list-style: none;
 }
 
 .hero-top-bar {
@@ -589,6 +621,13 @@ section {
   opacity: 0;
 }
 
+/* ===================== WAVE-BACKGROUND ===================== */
+
+
+
+
+
+
 /* ===================== ABOUT BENTO ===================== */
 .bento-grid {
   display: grid;
@@ -636,7 +675,6 @@ section {
 
 }
 
-/* ===================== SOCIAL LINKS GRID ===================== */
 .social-link-row {
   display: flex;
   align-items: center;
@@ -1062,13 +1100,14 @@ section {
   height: 100vh;
 }
 
+
 .bento-right {
   display: flex;
   flex-direction: column;
   width: 50%;
   height: 100vh;
   padding: 42px;
-  border-left: 1px solid var(--border);
+  border: 1px solid var(--border);
 }
 
 .bento-left {

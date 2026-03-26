@@ -8,6 +8,7 @@ import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import ToolkitSection from './components/ToolkitSection';
 import ContactSection from './components/ContactSection';
+import BestWorks from './components/BestWorks';
 
 export default function Home() {
   const mainRef = useRef(null);
@@ -37,14 +38,13 @@ export default function Home() {
     <>
       <Loader />
       <CustomCursor />
-      <Navbar />
       <main ref={mainRef} id="main-content" aria-label="Main content">
         <HeroSection />
         <AboutSection />
-        <ToolkitSection />
+        <BestWorks />
+        {/* <ToolkitSection /> */}
         <ContactSection />
       </main>
-      {/* <Footer /> */}
     </>
   );
 }
