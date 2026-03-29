@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 import NavLinks from './NavComponent';
 
-const LINKS = ['Home', 'About Me', 'Works'];
+const LINKS = ['Sofy', 'Home', 'About Me', 'Projects'];
 
 const SOCIALS = [
   {

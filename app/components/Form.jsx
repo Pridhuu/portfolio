@@ -44,7 +44,7 @@ export default function ContactForm() {
 
         header: {
             padding: '40px 56px',
-            borderBottom: '1px solid var(--border)',
+            borderBottom: '1px solid #262626',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
@@ -76,7 +76,7 @@ export default function ContactForm() {
         },
 
         inputBox: {
-            borderBottom: '1px solid var(--border)',
+            borderBottom: '1px solid #262626',
             height: '80px',
         },
 

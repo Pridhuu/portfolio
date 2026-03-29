@@ -4,14 +4,14 @@
 
 /* ===================== DESIGN TOKENS ===================== */
 :root {
-  --bg: #eeece8;
-  --bg-dark: #e8e6e1;
+  --bg: #ececec;
+  --bg-dark: #ececec;
   --fg: #0a0a0a;
   --fg-mid: #1a1a1a;
   --fg-light: #444444;
   --accent: #c8382a;
   --accent-hover: #a02820;
-  --border: #c8c5be;
+  --border: #262626;
   --border-light: #dddad4;
   --white: #ffffff;
   -font-sans: var(--font-jakarta);
@@ -535,12 +535,24 @@ a {
   border-color: var(--fg);
 }
 
-/* section {
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-} */
+.view-container {
+  transition: all 0.3s ease;
+}
 
-/* ===================== HERO ===================== */
+.view-container:hover {
+  background: #262626;
+  color: #ececec;
+  border-color: #262626;
+}
+
+.arrow-icon {
+  transition: all 0.4s ease;
+}
+
+.view-container:hover .arrow-icon {
+  content: url('/arrowButtonHover.svg');
+}
+
 .hero-section {
   min-height: 100vh;
   display: flex;
@@ -632,12 +644,12 @@ a {
 .bento-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid #262626;
 }
 
 .bento-cell {
-  border-right: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  border-right: 1px solid #262626;
+  border-bottom: 1px solid #262626;
   padding: 24px;
   position: relative;
   overflow: hidden;
@@ -680,7 +692,7 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: 16px 20px;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid #262626;
   transition: background var(--transition-fast), padding-left var(--transition-fast);
   cursor: pointer;
   gap: 12px;
@@ -1107,7 +1119,7 @@ a {
   width: 50%;
   height: 100vh;
   padding: 42px;
-  border: 1px solid var(--border);
+  border: 1px solid #262626;
 }
 
 .bento-left {
@@ -1120,6 +1132,68 @@ a {
 
 .bento-about {
   margin: 0%;
+}
+
+/* FLIP CARDS */
+.flip-card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.flip-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-front,
+.flip-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-back {
+  transform: rotateY(180deg);
+  background: #111;
+  color: #fff;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* TEXT */
+.view-more {
+  color: #000;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.view-more:hover {
+  text-decoration: underline;
+}
+
+.card-title {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.full-desc {
+  font-size: 12px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+.back-btn {
+  margin-top: 10px;
+  padding: 6px 10px;
+  border: 1px solid #fff;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
 }
 
 .bento-cell-left {
@@ -1144,7 +1218,6 @@ a {
   max-width: 380px;
 }
 
-/* Skill image placeholder */
 .skill-bar-wrap {
   margin-top: 20px;
 }

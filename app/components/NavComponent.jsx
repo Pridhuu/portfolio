@@ -7,7 +7,7 @@ export default function NavLinks() {
         { label: 'Sofy', id: 'sofy' },
         { label: 'Home', id: 'hero' },
         { label: 'About Me', id: 'about' },
-        { label: 'Works', id: 'toolkit' },
+        { label: 'Projects', id: 'projects' },
     ];
 
     const scrollToSection = useCallback((id) => {

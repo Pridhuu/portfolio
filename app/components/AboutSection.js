@@ -152,12 +152,12 @@ export default function AboutSection() {
         {/* LEFT SIDE */}
         <div className="bento-left">
 
-          <BentoStatCard className="border-left"
+          <BentoStatCard className="client-bento"
             title="Client Satisfaction"
             description="Delivering consistent quality through clear communication and thoughtful execution"
             value={98}
             suffix="%"
-            style={{ border: '1px solid var(--border)' }}
+            style={{ borderRight: '1px solid #262626', borderTop: '1px solid #262626' }}
           />
 
           <div className="bento-cell-left"
@@ -165,7 +165,7 @@ export default function AboutSection() {
               display: 'flex',
               flexDirection: 'column',
             }}>
-            <div className={`bento-label ${heroFont.className}`} style={{ fontSize: '32px', fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1, textAlign: 'center', width: '100%', height: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>ABOUT ME</div>
+            <div className={`bento-label ${heroFont.className}`} style={{ fontSize: '32px', fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1, textAlign: 'center', width: '100%', height: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid #262626', borderBottom: '1px solid #262626' }}>ABOUT ME</div>
 
 
             <div className="service-list" style={{ height: '50%' }}>
@@ -178,7 +178,8 @@ export default function AboutSection() {
             description="Building responsive, reliable interfaces with clean code and modern technologies"
             value={4}
             suffix="+"
-            style={{ borderRight: '1px solid var(--border)' }}
+            className="frontend-Bento"
+            style={{ borderRight: '1px solid #262626', borderBottom: '1px solid #262626', borderTop: '1px solid #262626' }}
           />
 
           <BentoStatCard
@@ -191,7 +192,7 @@ export default function AboutSection() {
             }
             value={10}
             suffix="+"
-            style={{ borderRight: '1px solid var(--border)' }}
+            style={{ borderTop: '1px solid #262626', borderBottom: '1px solid #262626' }}
           />
 
         </div>

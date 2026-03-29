@@ -2,42 +2,44 @@
 
 import { useState, useRef, useEffect } from 'react';
 
+
 const styles = {
     wrapper: {
         width: '100%',
-        height: '572px',
         maxWidth: '1608px',
         margin: '0 auto',
-        padding: '20px',
-        // backgroundColor: 'red',
+        userSelect: 'none',
     },
 
     carousel: {
+        borderTop: '1px solid #262626',
+        borderBottom: '1px solid #262626',
+        borderLeft: '1px solid #262626',
         overflow: 'hidden',
-        border: '1px solid #c8c5be',
         position: 'relative',
+        height: '420px'
     },
 
     track: {
         display: 'flex',
-        transition: 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)', // smooth easing
+        transition: 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)',
     },
 
     slide: {
-        minWidth: '33.3333%', // 🔥 3 cards visible
-        padding: '20px',
-        boxSizing: 'border-box',
+        minWidth: '33.3333%',
+        borderRight: '1px solid #262626',
+        height: '420px',
     },
 
     card: {
         width: '100%',
-        borderRight: '1px solid #c8c5be',
-        paddingRight: '16px',
+        height: '100%',
+        padding: '18px',
     },
 
     image: {
         width: '100%',
-        height: '180px',
+        height: '240px',
         objectFit: 'cover',
         marginBottom: '12px',
     },
@@ -45,60 +47,51 @@ const styles = {
     meta: {
         display: 'flex',
         justifyContent: 'space-between',
-        fontSize: '10px',
-        color: '#555',
-        marginBottom: '8px',
+        fontSize: '12px',
+        marginBottom: '24px',
     },
 
     desc: {
-        fontSize: '11px',
-        color: '#777',
+        fontSize: '12px',
+        color: '#8a8a8a',
         lineHeight: '1.6',
-    },
-
-    dots: {
-        display: 'flex',
-        justifyContent: 'center',
-        gap: '6px',
-        marginTop: '12px',
-    },
-
-    dot: {
-        width: '6px',
-        height: '6px',
-        borderRadius: '50%',
-        background: '#000',
-        cursor: 'pointer',
+        textAlign: 'justify',
     },
 };
 
 const data = [
     {
-        image: '/img1.jpg',
+        image: '../projects/img1.jpg',
         date: 'December, 26',
         tag: 'Figma',
         desc: 'This project includes the interface for Home, Dashboard and Favorites page.',
     },
     {
-        image: '/img2.jpg',
+        image: '../projects/img2.jpg',
         date: 'December, 26',
         tag: 'Figma',
         desc: 'This project includes the interface for Home, Dashboard and Favorites page.',
     },
     {
-        image: '/img3.jpg',
+        image: '../projects/img3.jpg',
         date: 'December, 26',
         tag: 'Figma',
         desc: 'This project includes the interface for Home, Dashboard and Favorites page.',
     },
     {
-        image: '/img4.jpg',
+        image: '../projects/img4.jpg',
+        date: 'December, 26',
+        tag: 'Figma',
+        desc: 'This project is a React-based movie listing application featuring Home, Dashboard, and Favorites pages. It allows users to browse movies, view insights, and save preferred titles. Built with reusable components and dynamic state management, it ensures a responsive, user-friendly interface while demonstrating strong frontend development skills and modern design practices.',
+    },
+    {
+        image: '../projects/img5.jpg',
         date: 'December, 26',
         tag: 'Figma',
         desc: 'This project includes the interface for Home, Dashboard and Favorites page.',
     },
     {
-        image: '/img5.jpg',
+        image: '../projects/img6.jpg',
         date: 'December, 26',
         tag: 'Figma',
         desc: 'This project includes the interface for Home, Dashboard and Favorites page.',
@@ -107,6 +100,7 @@ const data = [
 
 export default function WorkCarousel() {
     const [index, setIndex] = useState(0);
+    const [flippedIndex, setFlippedIndex] = useState(null);
     const startX = useRef(0);
     const isDragging = useRef(false);
     const autoSlideRef = useRef(null);
@@ -163,20 +157,59 @@ export default function WorkCarousel() {
                         transform: `translateX(-${index * (100 / 3)}%)`,
                     }}
                 >
-                    {data.map((item, i) => (
-                        <div key={i} style={styles.slide}>
-                            <div style={styles.card}>
-                                <img src={item.image} style={styles.image} />
+                    {data.map((item, i) => {
+                        const isFlipped = flippedIndex === i;
+                        const shortText =
+                            item.desc.length > 220
+                                ? item.desc.slice(0, 220) + '...'
+                                : item.desc;
 
-                                <div style={styles.meta}>
-                                    <span>{item.date}</span>
-                                    <span>{item.tag}</span>
+                        return (
+                            <div key={i} style={styles.slide}>
+                                <div style={styles.card}>
+
+                                    <div className={`flip-card ${isFlipped ? 'flipped' : ''}`}>
+
+                                        {/* FRONT */}
+                                        <div className="flip-front">
+                                            <img src={item.image} style={styles.image} />
+
+                                            <div style={styles.meta}>
+                                                <span>{item.date}</span>
+                                                <span>{item.tag}</span>
+                                            </div>
+
+                                            <p style={styles.desc}>
+                                                {shortText}
+                                                {item.desc.length > 120 && (
+                                                    <span
+                                                        className="view-more"
+                                                        onClick={() => setFlippedIndex(i)}
+                                                    >
+                                                        {' '}view more
+                                                    </span>
+                                                )}
+                                            </p>
+                                        </div>
+
+                                        {/* BACK */}
+                                        <div className="flip-back">
+                                            <h3 className="card-title">Project Overview</h3>
+                                            <p className="full-desc">{item.desc}</p>
+
+                                            <button
+                                                className="back-btn"
+                                                onClick={() => setFlippedIndex(null)}
+                                            >
+                                                Back
+                                            </button>
+                                        </div>
+
+                                    </div>
                                 </div>
-
-                                <p style={styles.desc}>{item.desc}</p>
                             </div>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </div>

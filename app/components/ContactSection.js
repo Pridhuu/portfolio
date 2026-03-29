@@ -49,7 +49,7 @@ export default function ContactSection() {
       id="contact"
       aria-label="Contact"
       style={{
-        borderTop: '1px solid var(--border)',
+        borderTop: '1px solid #262626',
         height: '100vh',
         display: 'grid',
         gridTemplateColumns: '1fr 2fr 1fr 2fr 1fr',
@@ -92,8 +92,8 @@ export default function ContactSection() {
           transform: formVisible ? 'translateY(0)' : 'translateY(24px)',
           transition: 'opacity 0.7s ease, transform 0.7s ease',
           gridColumn: '4',
-          borderLeft: '1px solid var(--border)',
-          borderRight: '1px solid var(--border)',
+          borderLeft: '1px solid #262626',
+          borderRight: '1px solid #262626',
           display: 'flex',
           flexDirection: 'column',
         }}

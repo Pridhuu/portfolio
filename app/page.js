@@ -42,7 +42,7 @@ export default function Home() {
         <HeroSection />
         <AboutSection />
         <BestWorks />
-        {/* <ToolkitSection /> */}
+        <ToolkitSection />
         <ContactSection />
       </main>
     </>

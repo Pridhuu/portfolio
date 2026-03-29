@@ -32,13 +32,13 @@ const TOOLS = [
 
 export default function Page() {
   return (
-    <div className='main-toolkit-section' style={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+    <div id="toolkit" aria-label="Toolkit" className='main-toolkit-section' style={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid #262626' }}>
 
 
       <div className='toolkit-section-top' style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridTemplateRows: 'repeat(1, auto)', width: '100%', flex: 1 }}>
 
 
-        <div className="toolkit-section" style={{ width: '100%', border: '1px solid var(--border)', height: '100%', gridColumn: '2', gridRow: '1', padding: '52px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <div className="toolkit-section" style={{ width: '100%', borderLeft: '1px solid #262626', borderRight: '1px solid #262626', height: '100%', gridColumn: '2', gridRow: '1', padding: '52px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <div className='heading-container' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
 
 
@@ -64,7 +64,7 @@ export default function Page() {
       <div className='toolkit-section-top' style={{ display: 'grid', gridTemplateColumns: '1fr 2fr 1fr 2fr 1fr', gridTemplateRows: 'repeat(1, auto)', width: '100%', flex: 1 }}>
 
 
-        <div className="toolkit-section" style={{ width: '100%', border: '1px solid var(--border)', height: '100%', gridColumn: '4', gridRow: '1', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+        <div className="toolkit-section" style={{ width: '100%', borderLeft: '1px solid #262626', borderRight: '1px solid #262626', height: '100%', gridColumn: '4', gridRow: '1', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
           <ToolList />
         </div>
 

@@ -50,16 +50,18 @@ export default function BentoStatCard({
     description,
     value,
     suffix = '',
+    className = '',
+    style = {},
 }) {
     return (
-        <div className="bento-cell-left" style={{
+        <div className={`bento-cell-left ${className}`} style={{
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
             alignItems: 'center',
             padding: '16px 64px',
             height: '50%',
-            border: '1px solid var(--border)',
+            ...style,
         }}>
 
             {/* Top Content */}
