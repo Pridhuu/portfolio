@@ -42,14 +42,14 @@ export default function Page() {
           <div className='heading-container' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
 
 
-            <div className={`my-text ${italicFont.className}`} style={{ fontSize: 'clamp(24px, 12vw, 56px)', fontWeight: 500, letterSpacing: '-0.04em', lineHeight: 1, textAlign: 'left', width: '100%', color: 'red', marginBottom: '12px' }}>
+            <div className={`my-text ${italicFont.className}`} style={{ fontSize: 'clamp(24px, 12vw, 56px)', fontWeight: 500, letterSpacing: '-0.04em', lineHeight: 1, textAlign: 'left', width: '100%', color: '#b22222', marginBottom: '12px' }}>
               My
             </div>
             <div className={`tool-text ${heroFont.className}`} style={{ fontSize: 'clamp(28px, 8vw, 48px)', fontWeight: 600, letterSpacing: '-0.04em', lineHeight: 1, textTransform: 'uppercase', textAlign: 'left', width: '100%' }}>
               TOOLKIT
             </div>
           </div>
-          <div className='description-container' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'right' }}>
+          <div className='description-container' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'right', fontSize: '14px' }}>
             A curated set of technologies and tools I use to design, build, and ship digital experiences
           </div>
         </div>

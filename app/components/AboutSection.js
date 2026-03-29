@@ -201,7 +201,7 @@ export default function AboutSection() {
         <div className="bento-right">
 
           <div className="bento-about">
-            <span className={`im-label ${italicFont.className}`} style={{ color: "#a02820", fontSize: "84px" }}>I’m</span>
+            <span className={`im-label ${italicFont.className}`} style={{ color: "#B22222", fontSize: "84px" }}>I’m</span>
             <div className={`im-name ${heroFont.className}`}><img src="/logoPRIDHU.svg" alt="PRIDHU" width={"720px"} /></div>
 
             <p className="about-text" style={{ textAlign: "justify" }}>

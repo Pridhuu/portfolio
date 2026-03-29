@@ -51,7 +51,7 @@ export default function CursorClock() {
                     top: '50%',
                     width: '1.5px',
                     height: '32px',
-                    background: isActive ? 'red' : '#333',
+                    background: isActive ? '#b22222' : '#333',
                     transform: `
                         translate(-50%, -50%)
                         rotate(${angle}deg)
@@ -66,7 +66,7 @@ export default function CursorClock() {
                         style={{
                             width: '6px',
                             height: '6px',
-                            background: 'red',
+                            background: '#b22222',
                             borderRadius: '50%',
                             position: 'absolute',
                             top: '-3px',

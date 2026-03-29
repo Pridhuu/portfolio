@@ -54,7 +54,7 @@ export default function ContactForm() {
 
         lets: {
             fontSize: '48px',
-            color: 'red',
+            color: '#b22222',
             width: '100%',
             textAlign: 'left',
 

@@ -18,7 +18,7 @@ export default function BestWorks() {
             <div className='heading-container' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', width: '100%' }}>
 
 
-                <div className={`my-text ${italicFont.className}`} style={{ fontSize: 'clamp(24px, 12vw, 72px)', fontWeight: 500, letterSpacing: '-0.04em', lineHeight: 1, textAlign: 'left', width: '100%', color: 'red', marginBottom: '12px' }}>
+                <div className={`my-text ${italicFont.className}`} style={{ fontSize: 'clamp(24px, 12vw, 72px)', fontWeight: 500, letterSpacing: '-0.04em', lineHeight: 1, textAlign: 'left', width: '100%', color: '#B22222', marginBottom: '12px' }}>
                     Best
                 </div>
 
