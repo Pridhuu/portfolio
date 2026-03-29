@@ -1,38 +1,83 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import localFont from 'next/font/local';
+
+const heroFont = localFont({
+  src: '../fonts/MyHeroFont.woff2',
+  variable: '--font-hero',
+});
 
 export default function Loader() {
-  const [progress, setProgress] = useState(0);
+  const text = 'PRIDHU';
+  const [display, setDisplay] = useState(Array(text.length).fill(''));
   const [hidden, setHidden] = useState(false);
+  const currentIndexRef = useRef(0);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((p) => {
-        if (p >= 100) {
-          clearInterval(interval);
-          setTimeout(() => setHidden(true), 400);
-          return 100;
-        }
-        const increment = p < 60 ? Math.random() * 12 + 4 : Math.random() * 6 + 2;
-        return Math.min(p + increment, 100);
-      });
-    }, 60);
+    const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
-    return () => clearInterval(interval);
+    const revealLetter = () => {
+      const currentIndex = currentIndexRef.current;
+
+      if (currentIndex >= text.length) {
+        setTimeout(() => setHidden(true), 500);
+        return;
+      }
+
+      let iterations = 0;
+
+      const interval = setInterval(() => {
+        // 🔁 Scramble phase
+        setDisplay((prev) => {
+          const updated = [...prev];
+          updated[currentIndex] =
+            chars[Math.floor(Math.random() * chars.length)];
+          return updated;
+        });
+
+        iterations++;
+
+        if (iterations > 5) {
+          clearInterval(interval);
+
+          // ✅ FORCE LOCK correct letter
+          setDisplay((prev) => {
+            const updated = [...prev];
+            updated[currentIndex] = text[currentIndex];
+            return updated;
+          });
+
+          currentIndexRef.current += 1;
+
+          // slight delay before next letter
+          setTimeout(
+            revealLetter,
+            currentIndex === text.length - 2 ? 120 : 50
+          );
+        }
+      }, 40);
+    };
+
+    revealLetter();
   }, []);
 
   return (
     <div className={`loader${hidden ? ' hidden' : ''}`} aria-hidden="true">
-      <div className="loader-name" style={{ animation: 'letterReveal 0.8s cubic-bezier(0.4,0,0.2,1) both' }}>
-        PRIDHU
+      <div
+        className={`loader-name ${heroFont.className}`}
+        style={{
+          fontSize: 'clamp(28px, 8vw, 84px)',
+          fontWeight: 900,
+          letterSpacing: '-0.04em',
+          display: 'flex',
+          gap: '8px',
+        }}
+      >
+        {display.map((char, i) => (
+          <span key={i}>{char}</span>
+        ))}
       </div>
-      <div className="loader-bar">
-        <div className="loader-progress" style={{ width: `${progress}%` }} />
-      </div>
-      <span style={{ fontSize: '10px', color: 'rgba(238,236,232,0.4)', letterSpacing: '0.15em', fontFamily: 'var(--font-sans)' }}>
-        LOADING — {Math.round(progress)}%
-      </span>
     </div>
   );
 }
