@@ -44,6 +44,20 @@ function Counter({ value, suffix = '' }) {
     return <span ref={ref}>{count}{suffix}</span>;
 }
 
+/* Split title: space always kept, br adds line-break on mobile only */
+function SplitTitle({ title }) {
+    const spaceIdx = title.indexOf(' ');
+    if (spaceIdx === -1) return <>{title}</>;
+    return (
+        <>
+            {title.slice(0, spaceIdx)}
+            {/* The br is shown on mobile via CSS; space is always present for desktop */}
+            <span className="bento-title-space"> </span>
+            <br className="bento-title-break" />
+            {title.slice(spaceIdx + 1)}
+        </>
+    );
+}
 
 export default function BentoStatCard({
     title,
@@ -59,22 +73,35 @@ export default function BentoStatCard({
             flexDirection: 'column',
             justifyContent: 'space-between',
             alignItems: 'center',
-            padding: '16px 64px',
-            height: '50%',
+            padding: 'clamp(12px, 2.5vw, 24px) clamp(16px, 4vw, 64px)',
             ...style,
         }}>
 
             {/* Top Content */}
             <div className="bento-label-container" style={{ display: 'flex', flexDirection: 'column', width: '100%' }}>
-                <div className="bento-label" style={{ fontSize: '42px', fontWeight: 500, marginBottom: '2px', letterSpacing: '-0.02em', lineHeight: 1, textAlign: 'right', width: '100%' }}>{title}</div>
-                <div className="bento-desc" style={{ fontSize: '14px', textAlign: 'right', lineHeight: 1.4, width: '100%', flex: 1 }}>{description}</div>
+                <div
+                    className="bento-label"
+                    style={{
+                        fontWeight: 500,
+                        marginBottom: '2px',
+                        letterSpacing: '-0.02em',
+                        lineHeight: 1.1,
+                        textAlign: 'right',
+                        width: '100%',
+                        wordBreak: 'break-word',
+                        overflowWrap: 'break-word',
+                    }}
+                >
+                    <SplitTitle title={title} />
+                </div>
+                <div className="bento-desc" style={{ textAlign: 'right', lineHeight: 1.4, width: '100%', flex: 1 }}>{description}</div>
             </div>
 
             {/* Bottom Value */}
-            <div className={`bento-value ${statFont.className}`} style={{ fontSize: '108px', width: '100%', textAlign: 'right' }}>
+            <div className={`bento-value ${statFont.className}`} style={{ width: '100%', textAlign: 'right' }}>
                 <Counter value={value} suffix={suffix} />
             </div>
 
         </div>
     );
-}
+}

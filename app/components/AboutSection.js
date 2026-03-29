@@ -186,8 +186,7 @@ export default function AboutSection() {
             title="UI/UX Designing"
             description={
               <>
-                Designing intuitive experiences through user research, clarity, and<br />
-                visual balance
+                Designing intuitive experiences through user research, clarity, and visual balance
               </>
             }
             value={10}
@@ -202,7 +201,7 @@ export default function AboutSection() {
 
           <div className="bento-about">
             <span className={`im-label ${italicFont.className}`} style={{ color: "#B22222", fontSize: "84px" }}>I’m</span>
-            <div className={`im-name ${heroFont.className}`}><img src="/logoPRIDHU.svg" alt="PRIDHU" width={"720px"} /></div>
+            <div className={`im-name ${heroFont.className}`}><img src="/logoPRIDHU.svg" alt="PRIDHU" style={{ width: '100%', maxWidth: '720px' }} /></div>
 
             <p className="about-text" style={{ textAlign: "justify" }}>
               a designer and developer who loves transforming ideas into meaningful digital experiences. I blend creative design with functional development to craft interfaces that are intuitive, visually compelling, and user focused. Driven by curiosity and constant learning, I strive to create products that not only look great but also solve real problems and elevate the way people interact with technology.

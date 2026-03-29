@@ -38,31 +38,29 @@ export default function ContactForm() {
     const styles = {
         container: {
             width: '100%',
-            maxWidth: '500px',
+            maxWidth: '100%',
             margin: '0 auto',
         },
 
         header: {
-            padding: '40px 56px',
+            padding: 'clamp(24px, 3vw, 40px) clamp(20px, 4vw, 56px)',
             borderBottom: '1px solid #262626',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            height: '32%',
         },
 
         lets: {
-            fontSize: '48px',
+            fontSize: 'clamp(32px, 4vw, 48px)',
             color: '#b22222',
             width: '100%',
             textAlign: 'left',
-
         },
 
         heading: {
             margin: '0',
-            fontSize: '32px',
+            fontSize: 'clamp(22px, 3vw, 32px)',
             fontWeight: '500',
             letterSpacing: '-0.04em',
             color: '#222',
@@ -77,13 +75,13 @@ export default function ContactForm() {
 
         inputBox: {
             borderBottom: '1px solid #262626',
-            height: '80px',
+            height: '72px',
         },
 
         input: {
             width: '100%',
             height: '100%',
-            padding: '20px 30px',
+            padding: '16px clamp(16px, 2.5vw, 30px)',
             border: 'none',
             outline: 'none',
             fontSize: '14px',
@@ -93,7 +91,7 @@ export default function ContactForm() {
         buttonWrapper: {
             display: 'flex',
             justifyContent: 'center',
-            padding: '40px 0',
+            padding: 'clamp(24px, 3vw, 40px) 0',
         },
 
         button: {
@@ -103,6 +101,7 @@ export default function ContactForm() {
             background: 'transparent',
             fontSize: '24px',
             cursor: 'pointer',
+            border: '1px solid #262626',
         },
     };
 

@@ -1,6 +1,6 @@
 import Marquee from './Marquee';
 import localFont from 'next/font/local';
-import ToolList from './ToolList'
+import ToolList from './ToolList';
 
 const heroFont = localFont({
   src: '../fonts/MyHeroFont.woff2',
@@ -32,46 +32,46 @@ const TOOLS = [
 
 export default function Page() {
   return (
-    <div id="toolkit" aria-label="Toolkit" className='main-toolkit-section' style={{ height: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid #262626' }}>
-
-
-      <div className='toolkit-section-top' style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gridTemplateRows: 'repeat(1, auto)', width: '100%', flex: 1 }}>
-
-
-        <div className="toolkit-section" style={{ width: '100%', borderLeft: '1px solid #262626', borderRight: '1px solid #262626', height: '100%', gridColumn: '2', gridRow: '1', padding: '52px', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-          <div className='heading-container' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
-
-
-            <div className={`my-text ${italicFont.className}`} style={{ fontSize: 'clamp(24px, 12vw, 56px)', fontWeight: 500, letterSpacing: '-0.04em', lineHeight: 1, textAlign: 'left', width: '100%', color: '#b22222', marginBottom: '12px' }}>
+    <div
+      id="toolkit"
+      aria-label="Toolkit"
+      className="main-toolkit-section"
+    >
+      {/* Top grid: heading centered in 4-col grid */}
+      <div
+        className="toolkit-section-top toolkit-top-grid"
+      >
+        <div className="toolkit-section toolkit-heading-cell">
+          <div className="heading-container" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+            <div
+              className={`my-text ${italicFont.className}`}
+              style={{ fontSize: 'clamp(24px, 6vw, 56px)', fontWeight: 500, letterSpacing: '-0.04em', lineHeight: 1, textAlign: 'left', width: '100%', color: '#b22222', marginBottom: '12px' }}
+            >
               My
             </div>
-            <div className={`tool-text ${heroFont.className}`} style={{ fontSize: 'clamp(28px, 8vw, 48px)', fontWeight: 600, letterSpacing: '-0.04em', lineHeight: 1, textTransform: 'uppercase', textAlign: 'left', width: '100%' }}>
+            <div
+              className={`tool-text ${heroFont.className}`}
+              style={{ fontSize: 'clamp(28px, 5vw, 48px)', fontWeight: 600, letterSpacing: '-0.04em', lineHeight: 1, textTransform: 'uppercase', textAlign: 'left', width: '100%' }}
+            >
               TOOLKIT
             </div>
           </div>
-          <div className='description-container' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'right', fontSize: '14px' }}>
+          <div className="description-container toolkit-desc">
             A curated set of technologies and tools I use to design, build, and ship digital experiences
           </div>
         </div>
-
-
       </div>
-
 
       <Marquee items={TOOLS} speed={20} direction="right" />
 
-
-      <div className='toolkit-section-top' style={{ display: 'grid', gridTemplateColumns: '1fr 2fr 1fr 2fr 1fr', gridTemplateRows: 'repeat(1, auto)', width: '100%', flex: 1 }}>
-
-
-        <div className="toolkit-section" style={{ width: '100%', borderLeft: '1px solid #262626', borderRight: '1px solid #262626', height: '100%', gridColumn: '4', gridRow: '1', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
+      {/* Bottom grid: tool list */}
+      <div
+        className="toolkit-section-top toolkit-bottom-grid"
+      >
+        <div className="toolkit-section toolkit-list-cell">
           <ToolList />
         </div>
-
-
       </div>
-
-
     </div>
   );
 }

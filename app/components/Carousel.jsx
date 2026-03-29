@@ -2,63 +2,6 @@
 
 import { useState, useRef, useEffect } from 'react';
 
-
-const styles = {
-    wrapper: {
-        width: '100%',
-        maxWidth: '1608px',
-        margin: '0 auto',
-        userSelect: 'none',
-    },
-
-    carousel: {
-        borderTop: '1px solid #262626',
-        borderBottom: '1px solid #262626',
-        borderLeft: '1px solid #262626',
-        overflow: 'hidden',
-        position: 'relative',
-        height: '420px'
-    },
-
-    track: {
-        display: 'flex',
-        transition: 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)',
-    },
-
-    slide: {
-        minWidth: '33.3333%',
-        borderRight: '1px solid #262626',
-        height: '420px',
-    },
-
-    card: {
-        width: '100%',
-        height: '100%',
-        padding: '18px',
-    },
-
-    image: {
-        width: '100%',
-        height: '240px',
-        objectFit: 'cover',
-        marginBottom: '12px',
-    },
-
-    meta: {
-        display: 'flex',
-        justifyContent: 'space-between',
-        fontSize: '12px',
-        marginBottom: '24px',
-    },
-
-    desc: {
-        fontSize: '12px',
-        color: '#8a8a8a',
-        lineHeight: '1.6',
-        textAlign: 'justify',
-    },
-};
-
 const data = [
     {
         title: 'Sofy - Portfolio AI',
@@ -72,37 +15,54 @@ const data = [
         image: '../projects/img2.jpg',
         date: 'January, 2026',
         tag: 'Figma',
-        desc: 'This project is a UI/UX design solution developed for a Chartered Accountants firm as part of my role as a Freelance UI/UX Designer at Flink, a creative community focused on purposeful digital experiences. The interface is crafted to reflect professionalism, clarity, and trust, using a blue-centric color system balanced with neutral tones to convey stability. Emphasizing structured layouts, ample spacing, and intuitive sectioning, the design enables users to navigate complex financial services effortlessly. Minimal typography and clean iconography ensure content remains the focus without unnecessary distraction. Overall, the experience delivers a composed and dependable digital presence, reinforcing credibility through consistency, clarity, and thoughtful visual hierarchy.',
+        desc: 'This project is a UI/UX design solution developed for a Chartered Accountants firm as part of my role as a Freelance UI/UX Designer at Flink, a creative community focused on purposeful digital experiences. The interface is crafted to reflect professionalism, clarity, and trust, using a blue-centric color system balanced with neutral tones to convey stability. Emphasizing structured layouts, ample spacing, and intuitive sectioning, the design enables users to navigate complex financial services effortlessly. Minimal typography and clean iconography ensure content remains the focus without unnecessary distraction.',
     },
     {
         title: 'Internship Cell CET',
         image: '../projects/img3.jpg',
         date: 'January, 2026',
         tag: 'Figma',
-        desc: 'This project is a UI/UX design concept developed for the Internship Cell CET, focusing on usability, accessibility, and visual comfort for both students and administrators. The interface prioritizes simplicity over visual complexity, enabling users to easily explore opportunities, track applications, and stay informed without friction. Designed with a minimal structure and soft pastel color palette, it ensures clarity and reduced visual strain. Student-centric dashboards streamline discovery and management of internships, while a well-defined notification system enhances application tracking. Additionally, administrative features support the creation of shareable promotional content using templates for platforms like WhatsApp and LinkedIn.',
+        desc: 'This project is a UI/UX design concept developed for the Internship Cell CET, focusing on usability, accessibility, and visual comfort for both students and administrators. The interface prioritizes simplicity over visual complexity, enabling users to easily explore opportunities, track applications, and stay informed without friction.',
     },
     {
         title: 'Movie Matrix',
         image: '../projects/img4.jpg',
         date: 'December, 2025',
         tag: 'React, Figma',
-        desc: 'This project is a React-based movie listing application featuring Home, Dashboard, and Favorites pages. It allows users to browse movies, view insights, and save preferred titles. Built with reusable components and dynamic state management, it ensures a responsive, user-friendly interface while demonstrating strong frontend development skills and modern design practices.',
+        desc: 'This project is a React-based movie listing application featuring Home, Dashboard, and Favorites pages. It allows users to browse movies, view insights, and save preferred titles. Built with reusable components and dynamic state management, it ensures a responsive, user-friendly interface.',
     },
     {
         title: 'Promote - Hoomans Project',
         image: '../projects/img5.jpg',
         date: 'August, 2025',
         tag: 'Figma',
-        desc: 'Designed the Promote Dashboard (promote.makemypass) as part of Mellowship, collaborating within a team of three members under the guidance of a mentor as part of the Hoomans Project. The solution enables seamless event promotion through customizable social media templates, while significantly enhancing usability by reducing navigation steps and increasing user engagement, demonstrating strong collaboration, design thinking, and user-centric optimization.',
+        desc: 'Designed the Promote Dashboard (promote.makemypass) as part of Mellowship, collaborating within a team of three members under the guidance of a mentor as part of the Hoomans Project. The solution enables seamless event promotion through customizable social media templates.',
     },
     {
         title: 'µLearn Redesign',
         image: '../projects/img6.jpg',
         date: 'April, 2025',
         tag: 'Figma',
-        desc: 'This project is a UI/UX redesign concept for µLearn, focusing on enhancing usability, accessibility, and visual clarity for students and educators. The interface prioritizes simplicity, intuitive navigation, and a clean, modern aesthetic to create a more engaging and efficient learning experience. By restructuring layouts, refining typography, and optimizing workflows, the redesign aims to reduce cognitive load and improve overall user satisfaction while maintaining the platform’s core functionality.',
+        desc: 'This project is a UI/UX redesign concept for µLearn, focusing on enhancing usability, accessibility, and visual clarity for students and educators. The interface prioritizes simplicity, intuitive navigation, and a clean, modern aesthetic to create a more engaging and efficient learning experience.',
     },
 ];
+
+function useVisibleCount() {
+    const [count, setCount] = useState(3);
+    useEffect(() => {
+        const update = () => {
+            const w = window.innerWidth;
+            if (w <= 480) setCount(1);
+            else if (w <= 768) setCount(1);
+            else if (w <= 1024) setCount(2);
+            else setCount(3);
+        };
+        update();
+        window.addEventListener('resize', update);
+        return () => window.removeEventListener('resize', update);
+    }, []);
+    return count;
+}
 
 export default function WorkCarousel() {
     const [index, setIndex] = useState(0);
@@ -110,48 +70,58 @@ export default function WorkCarousel() {
     const startX = useRef(0);
     const isDragging = useRef(false);
     const autoSlideRef = useRef(null);
+    const visibleCount = useVisibleCount();
 
-    const maxIndex = data.length - 3;
+    const maxIndex = Math.max(0, data.length - visibleCount);
 
-    // 👉 Auto slide
+    // Auto slide — restart when visibleCount changes
     useEffect(() => {
         autoSlideRef.current = setInterval(() => {
             setIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
         }, 3000);
-
         return () => clearInterval(autoSlideRef.current);
     }, [maxIndex]);
 
-    // 👉 Drag start
+    // Clamp index when window resizes
+    useEffect(() => {
+        setIndex((prev) => Math.min(prev, maxIndex));
+    }, [maxIndex]);
+
     const handleStart = (e) => {
         clearInterval(autoSlideRef.current);
         isDragging.current = true;
         startX.current = e.touches ? e.touches[0].clientX : e.clientX;
     };
 
-    // 👉 Drag end
     const handleEnd = (e) => {
         if (!isDragging.current) return;
-
-        const endX = e.changedTouches
-            ? e.changedTouches[0].clientX
-            : e.clientX;
-
+        const endX = e.changedTouches ? e.changedTouches[0].clientX : e.clientX;
         const diff = startX.current - endX;
-
-        if (diff > 50) {
-            setIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-        } else if (diff < -50) {
-            setIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
-        }
-
+        if (diff > 40) setIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
+        else if (diff < -40) setIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
         isDragging.current = false;
     };
 
+    const slideWidthPct = 100 / visibleCount;
+    const carouselHeight = visibleCount === 1 ? 380 : 420;
+    const imageHeight = visibleCount === 1 ? 260 : 240;
+
     return (
-        <div style={styles.wrapper}>
+        <div className="carousel-wrapper" style={{
+            width: '100%',
+            maxWidth: '1608px',
+            margin: '0 auto',
+            userSelect: 'none',
+        }}>
             <div
-                style={styles.carousel}
+                style={{
+                    borderTop: '1px solid #262626',
+                    borderBottom: '1px solid #262626',
+                    borderLeft: '1px solid #262626',
+                    overflow: 'hidden',
+                    position: 'relative',
+                    height: `${carouselHeight}px`,
+                }}
                 onMouseDown={handleStart}
                 onMouseUp={handleEnd}
                 onTouchStart={handleStart}
@@ -159,49 +129,60 @@ export default function WorkCarousel() {
             >
                 <div
                     style={{
-                        ...styles.track,
-                        transform: `translateX(-${index * (100 / 3)}%)`,
+                        display: 'flex',
+                        transition: 'transform 0.6s cubic-bezier(0.22, 1, 0.36, 1)',
+                        transform: `translateX(-${index * slideWidthPct}%)`,
                     }}
                 >
                     {data.map((item, i) => {
                         const isFlipped = flippedIndex === i;
-                        const shortText =
-                            item.desc.length > 210
-                                ? item.desc.slice(0, 210) + '...'
-                                : item.desc;
+                        const shortText = item.desc.length > 210
+                            ? item.desc.slice(0, 210) + '...'
+                            : item.desc;
 
                         return (
-                            <div key={i} style={styles.slide}>
-                                <div style={styles.card}>
-
+                            <div
+                                key={i}
+                                className="carousel-slide"
+                                style={{
+                                    minWidth: `${slideWidthPct}%`,
+                                    borderRight: '1px solid #262626',
+                                    height: `${carouselHeight}px`,
+                                    flexShrink: 0,
+                                }}
+                            >
+                                <div style={{ width: '100%', height: '100%', padding: '18px' }}>
                                     <div className={`flip-card ${isFlipped ? 'flipped' : ''}`}>
 
                                         {/* FRONT */}
                                         <div className="flip-front">
-                                            <img src={item.image} style={styles.image} />
-
-                                            <div style={styles.meta}>
+                                            <img
+                                                src={item.image}
+                                                className="carousel-image"
+                                                style={{
+                                                    width: '100%',
+                                                    height: `${imageHeight}px`,
+                                                    objectFit: 'cover',
+                                                    marginBottom: '12px',
+                                                }}
+                                                alt={item.title}
+                                            />
+                                            <div style={{
+                                                display: 'flex',
+                                                justifyContent: 'space-between',
+                                                fontSize: '12px',
+                                                marginBottom: '12px',
+                                            }}>
                                                 <span>{item.date}</span>
-                                                <span>{item.tag}</span>
+                                                <span style={{ maxWidth: '55%', textAlign: 'right' }}>{item.tag}</span>
                                             </div>
-
-                                            <p style={styles.desc}>
+                                            <p style={{ fontSize: '12px', color: '#8a8a8a', lineHeight: '1.6', textAlign: 'justify' }}>
                                                 {shortText}
                                                 {item.desc.length > 120 && (
                                                     <span
                                                         className="view-more"
-                                                        onMouseEnter={() => {
-                                                            const ring = document.querySelector('.cursor-ring');
-                                                            if (ring) ring.classList.add('hovering');
-                                                        }}
-                                                        onMouseLeave={() => {
-                                                            const ring = document.querySelector('.cursor-ring');
-                                                            if (ring) ring.classList.remove('hovering');
-                                                        }}
                                                         onClick={() => setFlippedIndex(i)}
-                                                    >
-                                                        {' '}view more
-                                                    </span>
+                                                    > view more</span>
                                                 )}
                                             </p>
                                         </div>
@@ -210,17 +191,8 @@ export default function WorkCarousel() {
                                         <div className="flip-back">
                                             <h3 className="card-title">{item.title}</h3>
                                             <p className="full-desc" style={{ fontSize: '12px', textAlign: 'justify' }}>{item.desc}</p>
-
                                             <button
                                                 className="back-btn"
-                                                onMouseEnter={() => {
-                                                    const ring = document.querySelector('.cursor-ring');
-                                                    if (ring) ring.classList.add('hovering');
-                                                }}
-                                                onMouseLeave={() => {
-                                                    const ring = document.querySelector('.cursor-ring');
-                                                    if (ring) ring.classList.remove('hovering');
-                                                }}
                                                 onClick={() => setFlippedIndex(null)}
                                             >
                                                 Back
@@ -233,6 +205,27 @@ export default function WorkCarousel() {
                         );
                     })}
                 </div>
+            </div>
+
+            {/* Dot indicators */}
+            <div style={{ display: 'flex', justifyContent: 'center', gap: '8px', marginTop: '16px' }}>
+                {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+                    <button
+                        key={i}
+                        onClick={() => setIndex(i)}
+                        style={{
+                            width: i === index ? '24px' : '8px',
+                            height: '8px',
+                            borderRadius: '999px',
+                            background: i === index ? '#262626' : '#c0c0c0',
+                            border: 'none',
+                            cursor: 'pointer',
+                            transition: 'all 0.3s ease',
+                            padding: 0,
+                        }}
+                        aria-label={`Go to slide ${i + 1}`}
+                    />
+                ))}
             </div>
         </div>
     );
