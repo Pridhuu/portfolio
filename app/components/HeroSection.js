@@ -90,7 +90,7 @@ export default function HeroSection() {
       <Navbar />
       {/* Top info bar */}
       {/* <Waves
-        lineColor="#ffffff"
+        lineColor="#262626"
         backgroundColor="rgba(255, 255, 255, 0.2)"
         waveSpeedX={0.05}
         waveSpeedY={0.01}

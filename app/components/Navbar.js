@@ -63,7 +63,7 @@ export default function Navbar() {
   return (
     <>
       <nav ref={navRef} className="nav-root" role="navigation" aria-label="Main navigation">
-        <div className="nav-inner">
+        <div className="nav-inner" style={{ height: '84px' }}>
           {/* Logo */}
           <span className="nav-logo" style={{ animation: 'fadeIn 0.8s ease both' }}>
             <img src="/logoPRIDHU.svg" alt="Logo" width={180} height={24} />
@@ -71,7 +71,9 @@ export default function Navbar() {
 
           {/* Desktop Nav Links */}
           <NavLinks />
-
+          <div>
+            <img src="/HandResume.svg" alt="" width={26} height={26} />
+          </div>
           {/* Social Icons + Hamburger */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div className="nav-socials" aria-label="Social links">

@@ -50,7 +50,7 @@ const styles = {
     },
     track: {
         border: "1px solid var(--border)",
-        height: "180px",
+        height: "156px",
         display: 'flex',
         width: 'max-content',
     },
