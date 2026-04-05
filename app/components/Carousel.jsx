@@ -153,52 +153,52 @@ export default function WorkCarousel() {
                             >
                                 <div style={{ width: '100%', height: '100%', padding: '18px' }}>
                                     <div className={`flip-card ${isFlipped ? 'flipped' : ''}`}>
-
-                                        {/* FRONT */}
-                                        <div className="flip-front">
-                                            <img
-                                                src={item.image}
-                                                className="carousel-image"
-                                                style={{
-                                                    width: '100%',
-                                                    height: `${imageHeight}px`,
-                                                    objectFit: 'cover',
+                                        <div className="flip-inner">
+                                            {/* FRONT */}
+                                            <div className="flip-front">
+                                                <img
+                                                    src={item.image}
+                                                    className="carousel-image"
+                                                    style={{
+                                                        width: '100%',
+                                                        height: `${imageHeight}px`,
+                                                        objectFit: 'cover',
+                                                        marginBottom: '12px',
+                                                    }}
+                                                    alt={item.title}
+                                                />
+                                                <div style={{
+                                                    display: 'flex',
+                                                    justifyContent: 'space-between',
+                                                    fontSize: '12px',
                                                     marginBottom: '12px',
-                                                }}
-                                                alt={item.title}
-                                            />
-                                            <div style={{
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                fontSize: '12px',
-                                                marginBottom: '12px',
-                                            }}>
-                                                <span>{item.date}</span>
-                                                <span style={{ maxWidth: '55%', textAlign: 'right' }}>{item.tag}</span>
+                                                }}>
+                                                    <span>{item.date}</span>
+                                                    <span style={{ maxWidth: '55%', textAlign: 'right' }}>{item.tag}</span>
+                                                </div>
+                                                <p style={{ fontSize: '12px', color: '#8a8a8a', lineHeight: '1.6', textAlign: 'justify' }}>
+                                                    {shortText}
+                                                    {item.desc.length > 120 && (
+                                                        <span
+                                                            className="view-more"
+                                                            onClick={() => setFlippedIndex(i)}
+                                                        > view more</span>
+                                                    )}
+                                                </p>
                                             </div>
-                                            <p style={{ fontSize: '12px', color: '#8a8a8a', lineHeight: '1.6', textAlign: 'justify' }}>
-                                                {shortText}
-                                                {item.desc.length > 120 && (
-                                                    <span
-                                                        className="view-more"
-                                                        onClick={() => setFlippedIndex(i)}
-                                                    > view more</span>
-                                                )}
-                                            </p>
-                                        </div>
 
-                                        {/* BACK */}
-                                        <div className="flip-back">
-                                            <h3 className="card-title">{item.title}</h3>
-                                            <p className="full-desc" style={{ fontSize: '12px', textAlign: 'justify' }}>{item.desc}</p>
-                                            <button
-                                                className="back-btn"
-                                                onClick={() => setFlippedIndex(null)}
-                                            >
-                                                Back
-                                            </button>
+                                            {/* BACK */}
+                                            <div className="flip-back">
+                                                <h3 className="card-title">{item.title}</h3>
+                                                <p className="full-desc" style={{ fontSize: '12px', textAlign: 'justify' }}>{item.desc}</p>
+                                                <button
+                                                    className="back-btn"
+                                                    onClick={() => setFlippedIndex(null)}
+                                                >
+                                                    Back
+                                                </button>
+                                            </div>
                                         </div>
-
                                     </div>
                                 </div>
                             </div>

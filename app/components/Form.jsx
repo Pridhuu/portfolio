@@ -114,6 +114,10 @@ export default function ContactForm() {
         }));
     };
 
+    const isFormValid =
+        formData.name.trim() !== '' &&
+        /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email);
+
     return (
         <>
             <style>{`
@@ -172,8 +176,8 @@ export default function ContactForm() {
                     style={styles.form}
                 >
                     {[
-                        { name: 'name', placeholder: 'Name' },
-                        { name: 'email', placeholder: 'Email' },
+                        { name: 'name', placeholder: 'Name*' },
+                        { name: 'email', placeholder: 'Email*' },
                         { name: 'phone', placeholder: 'Phone' },
                     ].map((field) => (
                         <div key={field.name} style={styles.inputBox}>
@@ -183,6 +187,7 @@ export default function ContactForm() {
                                 placeholder={field.placeholder}
                                 value={formData[field.name]}
                                 onChange={handleChange}
+                                required={field.required}
                                 style={styles.input}
                             />
                         </div>
@@ -201,17 +206,19 @@ export default function ContactForm() {
 
                     {/* Submit Button */}
                     <div style={styles.buttonWrapper}>
-                        <button
-                            type="submit"
-                            style={styles.button}
-                            onMouseEnter={() => setIsHover(true)}
-                            onMouseLeave={() => setIsHover(false)}
-                        >
-                            <img
-                                src={isHover ? '/white-arrowButton.svg' : '/arrowButton.svg'}
-                                alt="Button"
-                            />
-                        </button>
+                        {isFormValid && (
+                            <button
+                                type="submit"
+                                style={styles.button}
+                                onMouseEnter={() => setIsHover(true)}
+                                onMouseLeave={() => setIsHover(false)}
+                            >
+                                <img
+                                    src={isHover ? '/white-arrowButton.svg' : '/arrowButton.svg'}
+                                    alt="Button"
+                                />
+                            </button>
+                        )}
                     </div>
                 </form>
             </div>

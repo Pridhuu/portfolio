@@ -123,7 +123,7 @@ export default function HeroSection() {
           flexDirection: 'column',
           flex: 1,
           justifyContent: 'flex-end',
-          overflow: 'hidden',
+          overflow: 'visible',
         }}
       >
         {/* "My self" italic label */}
@@ -131,25 +131,19 @@ export default function HeroSection() {
         {/* Big PRIDHU text */}
         <div
           className="hero-big-name"
-          style={{
-            padding: '0 12px 0 12px',
-            animation: 'none',
-            opacity: 1,
-          }}
         >
           <span
             className={heroFont.className}
-            // onMouseEnter={() => setTrigger((prev) => prev + 1)}
             style={{
-              paddingBottom: '10px',
               display: 'block',
-              overflow: 'hidden',
+              overflow: 'visible',
               animation: 'slideUp 1s 0.4s cubic-bezier(0.4,0,0.2,1) both',
               fontSize: 'clamp(56px, 19vw, 292px)',
               fontWeight: 900,
               letterSpacing: '-0.04em',
               lineHeight: 1,
               textTransform: 'uppercase',
+              textAlign: 'center',
             }}
           >
             {name.split('').map((char, i) => (

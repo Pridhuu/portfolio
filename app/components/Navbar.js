@@ -62,8 +62,8 @@ export default function Navbar() {
 
   return (
     <>
-      <nav ref={navRef} className="nav-root" role="navigation" aria-label="Main navigation">
-        <div className="nav-inner" style={{ height: '84px' }}>
+      <nav ref={navRef} className="nav-root" role="navigation" aria-label="Main navigation" style={{ marginTop: '24px' }}>
+        <div className="nav-inner" style={{ height: 'auto' }}>
           {/* Logo */}
           <span className="nav-logo" style={{ animation: 'fadeIn 0.8s ease both' }}>
             <img src="/logoPRIDHU.svg" alt="Logo" width={180} height={24} />
@@ -71,9 +71,6 @@ export default function Navbar() {
 
           {/* Desktop Nav Links */}
           <NavLinks />
-          <div>
-            <img src="/HandResume.svg" alt="" width={26} height={26} />
-          </div>
           {/* Social Icons + Hamburger */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div className="nav-socials" aria-label="Social links">
@@ -104,6 +101,9 @@ export default function Navbar() {
               <span className={`ham-line ${menuOpen ? 'open' : ''}`} />
             </button>
           </div>
+        </div>
+        <div className='hand-resume-text' style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', paddingRight: '228px' }}>
+          <img src="/HandResume.svg" alt="" width={156} height={156} style={{}} />
         </div>
       </nav>
 

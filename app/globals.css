@@ -48,6 +48,14 @@ body {
   cursor: none;
 }
 
+.hero-section,
+.bento-main,
+.work-container,
+.main-toolkit-section,
+#contact {
+  scroll-snap-align: start;
+}
+
 /* ===================== CUSTOM CURSOR ===================== */
 .cursor-dot {
   width: 8px;
@@ -602,6 +610,22 @@ a {
   .nav-mobile-menu {
     top: 52px;
   }
+
+  html {
+    scroll-snap-type: y mandatory;
+  }
+
+  body {
+    overflow-y: scroll;
+  }
+
+  .hero-section,
+  .bento-main,
+  .work-container,
+  .main-toolkit-section,
+  #contact {
+    min-height: 100vh;
+  }
 }
 
 @media (max-width: 480px) {
@@ -612,6 +636,14 @@ a {
   .nav-mobile-link {
     font-size: 18px;
     padding: 14px 0;
+  }
+
+  .hero-section,
+  .bento-main,
+  .work-container,
+  .main-toolkit-section,
+  #contact {
+    min-height: 100vh;
   }
 }
 
@@ -728,11 +760,12 @@ a {
   font-size: clamp(80px, 16vw, 220px);
   font-weight: 900;
   letter-spacing: -0.04em;
-  line-height: 0.85;
+  line-height: 1;
   text-transform: uppercase;
   animation: letterReveal 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   animation-delay: 0.3s;
   opacity: 0;
+  overflow: visible;
 }
 
 /* ===================== WAVE-BACKGROUND ===================== */
@@ -1008,6 +1041,19 @@ a {
   .contact-right-panel {
     border-top: 1px solid #262626 !important;
     padding-top: 32px;
+  }
+
+  /* Hide the clock (CursorRadial) — mobile shows social links only */
+  .contact-left-panel>*:first-child {
+    display: none;
+  }
+
+  /* Push "All rights reserved" to the very bottom */
+  .contact-center-panel {
+    order: 10;
+    border-top: 1px solid #262626 !important;
+    padding-top: 24px;
+    margin-top: 8px;
   }
 }
 
@@ -1301,6 +1347,11 @@ a {
     padding: 0 20px;
   }
 
+  /* HandResume only on desktop */
+  .hand-resume-text {
+    display: none !important;
+  }
+
   .nav-socials {
     gap: 10px;
   }
@@ -1461,6 +1512,16 @@ a {
     text-align: right;
   }
 
+  /* PRIDHU hero name — fit all 6 letters in viewport with equal left/right margin */
+  .hero-big-name {
+    padding: 0 !important;
+    text-align: center;
+  }
+
+  .hero-big-name span {
+    font-size: clamp(92px, 16vw, 292px) !important;
+  }
+
   /* ABOUT BENTO — stacked layout on mobile:
      Screen 1 = 2×2 grid  (2 rows × 2 cols, each cell = 50svh tall)
      Screen 2 = full-width bio + socials bento (100svh)           */
@@ -1561,6 +1622,23 @@ a {
 
   .bento-cell-left .bento-desc {
     font-size: clamp(11px, 2.8vw, 14px) !important;
+  }
+
+  /* ABOUT ME cell — bigger label, service list text smaller to fit */
+  .bento-cell-left .bento-label[class*="heroFont"],
+  .bento-cell-left>div>div.bento-label {
+    font-size: clamp(16px, 4.5vw, 28px) !important;
+  }
+
+  /* ServiceList items — shrink text so long names fit the narrow column */
+  .service-list div {
+    font-size: 11px !important;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    padding: 0 4px;
   }
 
 
@@ -1884,11 +1962,26 @@ a {
   position: relative;
   width: 100%;
   height: 100%;
-  transform-style: preserve-3d;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+
+  perspective: 1400px;
+  transition: transform 0.4s ease;
 }
 
-.flip-card.flipped {
+.flip-card:active {
+  transform: scale(0.98);
+}
+
+.flip-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  transform-style: preserve-3d;
+
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.flip-card.flipped .flip-inner {
   transform: rotateY(180deg);
 }
 
@@ -1897,8 +1990,19 @@ a {
   position: absolute;
   width: 100%;
   height: 100%;
+
   backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
+
+.flip-front {
+  transition: filter 0.4s ease;
+}
+
+.flip-card.flipped .flip-front {
+  filter: brightness(0.6);
+}
+
 
 .flip-back {
   transform: rotateY(180deg);
@@ -1907,6 +2011,8 @@ a {
   flex-direction: column;
   justify-content: space-between;
 }
+
+
 
 .view-more {
   color: #262626;
@@ -1940,12 +2046,12 @@ a {
   cursor: pointer;
 }
 
-/* 
+
 .back-btn:hover {
   background-color: #262626;
   color: #ececec;
   transition: background-color 0.3s ease, color 0.3s ease;
-} */
+}
 
 
 
