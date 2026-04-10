@@ -1403,7 +1403,7 @@ a {
   }
 
   .im-pridhu-name {
-    font-size: clamp(32px, 5vw, 56px);
+    font-size: clamp(32px, 6vw, 56px);
   }
 
   .social-name {
@@ -1527,9 +1527,10 @@ a {
     overflow: visible !important;
   }
 
-  /* Scale: 6 chars @ ~14vw each ≈ 84vw — fits with room on all phones */
+  /* PRIDHU: this wide display font needs ≤14vw to stay within the viewport.
+     The 40px floor is safely below 14vw at 400px (=56px) so it never clips. */
   .hero-big-name span {
-    font-size: clamp(60px, 14vw, 220px) !important;
+    font-size: clamp(42px, 18vw, 220px) !important;
   }
 
   /* ABOUT BENTO — stacked layout on mobile:
@@ -1624,9 +1625,10 @@ a {
   .bento-cell-left .bento-value {
     font-size: clamp(56px, 16vw, 108px) !important;
   }
+
   /* Stat card labels — big and bold to match desktop */
   .bento-cell-left .bento-label {
-    font-size: clamp(18px, 5vw, 32px) !important;
+    font-size: clamp(20px, 6.5vw, 48px) !important;
     font-weight: 700 !important;
   }
 
@@ -1642,7 +1644,7 @@ a {
   }
 
   /* Force the JS-set 192px inner container to fill the wrapper, not exceed it */
-  .service-list > div {
+  .service-list>div {
     width: 100% !important;
     height: 100% !important;
     max-height: 100% !important;
@@ -1798,12 +1800,13 @@ a {
 
   /* Smaller stat numbers so they don't overflow on ≤480px cells */
   .bento-cell-left .bento-value {
-    font-size: clamp(48px, 13vw, 80px) !important;
+    font-size: clamp(64px, 16vw, 80px) !important;
   }
 
-  /* Tighter label on small phones */
+  /* Tighter label on small phones — still bigger than desktop default */
   .bento-cell-left .bento-label {
-    font-size: clamp(14px, 4vw, 24px) !important;
+    font-size: clamp(24px, 5.6vw, 32px) !important;
+    font-weight: 500 !important;
   }
 
   /* Service list — limit height for smaller cells (50svh / 2 ≈ 25svh on small phones) */
@@ -1816,11 +1819,11 @@ a {
   }
 
   .im-label {
-    font-size: clamp(28px, 7vw, 44px) !important;
+    font-size: clamp(48px, 18vw, 54px) !important;
   }
 
   .im-name img {
-    max-width: 260px !important;
+    max-width: 360px !important;
   }
 
   .about-text {

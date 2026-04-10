@@ -79,7 +79,7 @@ const SOCIAL_LINKS = [
     name: 'Github',
     href: 'https://github.com/Pridhuu',
     icon: (
-      <img src="/Github.svg" alt="Github" width={30} height={30} />
+      <img src="/GitHub.svg" alt="Github" width={30} height={30} />
     ),
   },
   {
