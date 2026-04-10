@@ -138,7 +138,7 @@ export default function HeroSection() {
               display: 'block',
               overflow: 'visible',
               animation: 'slideUp 1s 0.4s cubic-bezier(0.4,0,0.2,1) both',
-              fontSize: 'clamp(56px, 19vw, 292px)',
+              fontSize: 'clamp(48px, 28vw, 292px)',
               fontWeight: 900,
               letterSpacing: '-0.04em',
               lineHeight: 1,

@@ -45,7 +45,7 @@ export default function Page() {
           <div className="heading-container" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
             <div
               className={`my-text ${italicFont.className}`}
-              style={{ fontSize: 'clamp(24px, 6vw, 56px)', fontWeight: 500, letterSpacing: '-0.04em', lineHeight: 1, textAlign: 'left', width: '100%', color: '#b22222', marginBottom: '12px' }}
+              style={{ fontSize: 'clamp(36px, 6vw, 56px)', fontWeight: 500, letterSpacing: '-0.04em', lineHeight: 1, textAlign: 'left', width: '100%', color: '#b22222', marginBottom: '12px' }}
             >
               My
             </div>

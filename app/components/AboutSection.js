@@ -160,15 +160,15 @@ export default function AboutSection() {
             style={{ borderRight: '1px solid #262626', borderTop: '1px solid #262626' }}
           />
 
-          <div className="bento-cell-left"
+          <div className="bento-cell-left about-me-cell"
             style={{
               display: 'flex',
               flexDirection: 'column',
+              padding: 0,
             }}>
-            <div className={`bento-label ${heroFont.className}`} style={{ fontSize: '32px', fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1, textAlign: 'center', width: '100%', height: '50%', display: 'flex', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid #262626', borderBottom: '1px solid #262626' }}>ABOUT ME</div>
+            <div className={`bento-label ${heroFont.className}`} style={{ fontSize: '32px', fontWeight: 500, letterSpacing: '-0.02em', lineHeight: 1, textAlign: 'center', width: '100%', flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', borderTop: '1px solid #262626', borderBottom: '1px solid #262626' }}>ABOUT ME</div>
 
-
-            <div className="service-list" style={{ height: '50%' }}>
+            <div className="service-list" style={{ flex: 1 }}>
               <ServiceList />
             </div>
           </div>

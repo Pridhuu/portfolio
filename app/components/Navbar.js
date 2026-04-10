@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import NavLinks from './NavComponent';
 
 const SOCIALS = [
@@ -12,12 +13,12 @@ const SOCIALS = [
   {
     label: 'LinkedIn',
     href: 'https://linkedin.com/in/pridhu',
-    icon: <img src="/linkedin.svg" alt="LinkedIn" width={26} height={26} />,
+    icon: <img src="/LinkedIn.svg" alt="LinkedIn" width={26} height={26} />,
   },
   {
     label: 'GitHub',
     href: 'https://github.com/Pridhuu',
-    icon: <img src="/github.svg" alt="GitHub" width={26} height={26} />,
+    icon: <img src="/GitHub.svg" alt="GitHub" width={26} height={26} />,
   },
   {
     label: 'Behance',
@@ -43,6 +44,7 @@ const NAV_ITEMS = [
 export default function Navbar() {
   const navRef = useRef(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,6 +57,11 @@ export default function Navbar() {
   }, []);
 
   const scrollTo = (id) => {
+    if (id === 'sofy') {
+      router.push('/sofy');
+      setMenuOpen(false);
+      return;
+    }
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
     setMenuOpen(false);

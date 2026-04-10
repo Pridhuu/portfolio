@@ -757,7 +757,7 @@ a {
 
 .hero-big-name {
   font-family: var(--font-sans);
-  font-size: clamp(80px, 16vw, 220px);
+  font-size: clamp(84px, 18vw, 220px);
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 1;
@@ -1019,6 +1019,7 @@ a {
     gap: 48px;
   }
 
+
   .contact-left-panel,
   .contact-center-panel,
   .contact-right-panel {
@@ -1043,9 +1044,9 @@ a {
     padding-top: 32px;
   }
 
-  /* Hide the clock (CursorRadial) — mobile shows social links only */
-  .contact-left-panel>*:first-child {
-    display: none;
+  /* Hide both the clock (CursorRadial) AND social links on mobile */
+  .contact-left-panel {
+    display: none !important;
   }
 
   /* Push "All rights reserved" to the very bottom */
@@ -1492,7 +1493,7 @@ a {
   }
 
   .nav-logo img {
-    width: 120px !important;
+    width: 160px !important;
   }
 
   /* HERO */
@@ -1512,14 +1513,23 @@ a {
     text-align: right;
   }
 
-  /* PRIDHU hero name — fit all 6 letters in viewport with equal left/right margin */
+  /* PRIDHU hero name — scale to fit all 6 chars in viewport, never clip */
   .hero-big-name {
     padding: 0 !important;
     text-align: center;
+    overflow: visible !important;
   }
 
+  /* Allow the parent containers to grow around the text */
+  .hero-section,
+  .hero-big-name,
   .hero-big-name span {
-    font-size: clamp(92px, 16vw, 292px) !important;
+    overflow: visible !important;
+  }
+
+  /* Scale: 6 chars @ ~14vw each ≈ 84vw — fits with room on all phones */
+  .hero-big-name span {
+    font-size: clamp(60px, 14vw, 220px) !important;
   }
 
   /* ABOUT BENTO — stacked layout on mobile:
@@ -1610,27 +1620,36 @@ a {
     display: none;
   }
 
-  /* Stat values — bigger now that label splits to 2 lines */
+  /* Stat values — large and prominent on mobile */
   .bento-cell-left .bento-value {
-    font-size: clamp(52px, 14vw, 84px) !important;
+    font-size: clamp(56px, 16vw, 108px) !important;
   }
-
+  /* Stat card labels — big and bold to match desktop */
   .bento-cell-left .bento-label {
-    font-size: clamp(20px, 5.5vw, 36px) !important;
-    font-weight: 600;
+    font-size: clamp(18px, 5vw, 32px) !important;
+    font-weight: 700 !important;
   }
 
   .bento-cell-left .bento-desc {
     font-size: clamp(11px, 2.8vw, 14px) !important;
   }
 
-  /* ABOUT ME cell — bigger label, service list text smaller to fit */
-  .bento-cell-left .bento-label[class*="heroFont"],
-  .bento-cell-left>div>div.bento-label {
-    font-size: clamp(16px, 4.5vw, 28px) !important;
+  /* ServiceList wrapper — just clip, let the component manage its own layout */
+  .service-list {
+    overflow: hidden !important;
+    min-height: 0 !important;
+    max-height: 25svh !important;
   }
 
-  /* ServiceList items — shrink text so long names fit the narrow column */
+  /* Force the JS-set 192px inner container to fill the wrapper, not exceed it */
+  .service-list > div {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    overflow: hidden !important;
+  }
+
+  /* ServiceList items — shrink text to fit narrow column */
   .service-list div {
     font-size: 11px !important;
     text-align: center;
@@ -1642,6 +1661,7 @@ a {
   }
 
 
+
   /* BEST WORKS */
   .work-container {
     padding-left: 16px !important;
@@ -1651,6 +1671,12 @@ a {
     min-height: 100vh;
     padding-top: 48px;
     padding-bottom: 48px;
+  }
+
+  /* Red italic accent texts (e.g. "Best" in Projects, "I'm" in About) — bigger on mobile */
+  .work-container .my-text,
+  .accent-italic {
+    font-size: clamp(40px, 14vw, 92px) !important;
   }
 
   .arrow-bottom {
@@ -1760,9 +1786,29 @@ a {
     padding-right: 12px;
   }
 
-  /* ABOUT */
+  /* ABOUT — tighter cells on small phones to fit both label + number */
   .bento-cell-left {
-    padding: 10px 12px !important;
+    padding: 8px 10px !important;
+  }
+
+  /* ABOUT ME cell must never have padding — two-class specificity beats the above */
+  .bento-cell-left.about-me-cell {
+    padding: 0 !important;
+  }
+
+  /* Smaller stat numbers so they don't overflow on ≤480px cells */
+  .bento-cell-left .bento-value {
+    font-size: clamp(48px, 13vw, 80px) !important;
+  }
+
+  /* Tighter label on small phones */
+  .bento-cell-left .bento-label {
+    font-size: clamp(14px, 4vw, 24px) !important;
+  }
+
+  /* Service list — limit height for smaller cells (50svh / 2 ≈ 25svh on small phones) */
+  .service-list {
+    max-height: 22svh !important;
   }
 
   .bento-right {
