@@ -129,14 +129,18 @@ export default function HeroSection() {
         {/* "My self" italic label */}
 
         {/* Big PRIDHU text */}
-        <div
-          className="hero-big-name"
-        >
+        <div className="hero-big-name">
+
+          {/* Image */}
+          <img src="/newmw.png" alt="Pridhu" className="hero-image" />
+
+          {/* Text */}
           <span
             className={heroFont.className}
             style={{
+              position: 'relative',
+              zIndex: 2,
               display: 'block',
-              overflow: 'visible',
               animation: 'slideUp 1s 0.4s cubic-bezier(0.4,0,0.2,1) both',
               fontSize: 'clamp(48px, 28vw, 292px)',
               fontWeight: 900,
@@ -156,6 +160,7 @@ export default function HeroSection() {
               </span>
             ))}
           </span>
+
         </div>
       </div>
     </section>

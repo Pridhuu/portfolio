@@ -766,6 +766,45 @@ a {
   animation-delay: 0.3s;
   opacity: 0;
   overflow: visible;
+  position: relative;
+  top: 12px;
+}
+
+.hero-big-name {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  overflow: visible;
+}
+
+/* Image behind text */
+.hero-image {
+  position: absolute;
+  /* 🔥 move up like your design */
+  left: 50%;
+  height: 90vh;
+  /* 🔥 important */
+  width: auto;
+  /* control size via width */
+
+  /* max-width: 500px; */
+  /* prevents huge scaling */
+  bottom: 56px;
+  transform: translateX(-50%);
+  /* adjust as needed */
+  z-index: 1;
+
+  opacity: 0.9;
+  /* optional for blending */
+  pointer-events: none;
+}
+
+@media (max-width: 768px) {
+  .hero-image {
+    height: 40dvh;
+  }
 }
 
 /* ===================== WAVE-BACKGROUND ===================== */

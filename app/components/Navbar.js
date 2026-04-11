@@ -33,7 +33,6 @@ const SOCIALS = [
 ];
 
 const NAV_ITEMS = [
-  { label: 'Sofy', id: 'sofy' },
   { label: 'Home', id: 'hero' },
   { label: 'About Me', id: 'about' },
   { label: 'Projects', id: 'projects' },
